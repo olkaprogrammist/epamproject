@@ -1,0 +1,78 @@
+header, section, footer, aside, nav, article, figure, figcaption {
+    display: block;
+}
+
+* {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    text-align: center;
+}
+
+#wrapper {
+    width: 1200px;
+    margin: auto;
+    text-align: left;
+    background-color: beige;
+}
+
+#header {
+    font-size: 50px;
+    color: beige;
+    background-color: darkred;
+    text-align: center;
+}
+
+#bookmarks li,h2 {
+    background-color: beige;
+    color: darkred;
+    font-size: 18px;
+    text-align: center;
+    list-style: none;
+    display: inline-block;
+    border: 1px solid black;
+    width: 250px;
+    height: 25px;
+    margin: 5px;
+    padding: 5px;
+}
+.nav{
+    background-color: darkred;
+}
+#choiceSection div{
+    background-color: beige;
+    color: darkred;
+    font-size: 48px;
+    text-align: center;
+    margin: 10px auto;
+    height: 150px;
+    padding-top: 75px;
+    width: 1200px;
+    border: darkred 1px solid;
+}
+#footer {
+
+    background-color: darkred;
+    color: beige;
+    text-align: center;
+    font-style: italic;
+    height: 70px;
+    padding: 5px 0px 0px 0px;
+    width: 1200px;
+}
+#bookmarksA li,h2 {
+    background-color: beige;
+    color: darkred;
+    font-size: 18px;
+    text-align: center;
+    list-style: none;
+    display: inline-block;
+    border: 1px solid black;
+    width: 30%;
+    height: 25px;
+    margin: 5px;
+    padding: 5px;
+}
