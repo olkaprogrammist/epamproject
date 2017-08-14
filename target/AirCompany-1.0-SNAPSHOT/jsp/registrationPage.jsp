@@ -52,7 +52,11 @@
             <span id="password_not_valid_error" class="password_errors">${password_not_valid_error}</span>
             <br>
 
-            <input id="registration_role_field" name="role" type="role" placeholder="${role}">
+           <select id="registration_role_field" name="role" type="role" placeholder="${role}">
+               <option>admin</option>
+               <option>dispatcher</option>
+           </select>
+            <%--<input id="registration_role_field" name="role" type="role" placeholder="${role}">--%>
             <span id="role_missing_error" class="role_errors">${role_missing_error}</span>
             <br>
 

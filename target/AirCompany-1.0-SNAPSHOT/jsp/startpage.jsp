@@ -13,9 +13,9 @@
 <body>
 <div id="wrapper">
 <section id="choiceSection">
-    <a href="/jsp/adminFlights.jsp">
+    <a href="/jsp/loginPage.jsp">
     <div> Войти </div>    </a>
-    <a href="/jsp/dispFlights.jsp">
+    <a href="/jsp/registrationPage.jsp">
     <div> Зарегистрироваться </div>   </a>
 </section>
 

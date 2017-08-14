@@ -2,10 +2,9 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%--<jsp:include page="header.jsp"/>--%>
+    <jsp:include page="header.jsp"/>
 </head>
 <body>
 <div id="wrapper">
@@ -30,9 +29,9 @@
                 <br>
                 <button>${signin}</button>
             </form>
-            <%--<form action="/jsp/auth/registration.jsp" method="get">--%>
-                <%--<button id="login_form_call_registration_page_button">${auth_registration}</button>--%>
-            <%--</form>--%>
+            <form action="/jsp/registration.jsp" method="get">
+                <button id="login_form_call_registration_page_button">${auth_registration}</button>
+            </form>
         </div>
 
     </div>

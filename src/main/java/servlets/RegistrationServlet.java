@@ -75,9 +75,9 @@ public class RegistrationServlet extends HttpServlet {
             resp.sendRedirect("/jsp/registration_success.jsp");
         } else {
             req.setAttribute("current_login",login);
-            for (String s : errors) {
-                resp.addCookie(new Cookie(s,""));
-            }
+//            for (String s : errors) {
+//                resp.addCookie(new Cookie(s,""));
+//            }
             req.getRequestDispatcher("/jsp/registrationPage.jsp").forward(req, resp);
         }
     }

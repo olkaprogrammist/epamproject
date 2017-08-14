@@ -43,16 +43,8 @@ public class RegistrationBean {
 
     public UserEntity toEntity() {
         UserEntity entity = new UserEntity();
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes("UTF-8"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        byte[] passHash = md.digest();
         entity.setLogin(login);
-        entity.setPassword(new String(passHash));
+        entity.setPassword(password);
         entity.setRole(role);
         return entity;
     }
