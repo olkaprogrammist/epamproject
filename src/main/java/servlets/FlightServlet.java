@@ -1,51 +1,81 @@
 package servlets;
 
-
-
-import database.dao.CitiesDao;
-import database.dao.UserDao;
-import database.entities.CitiesEntity;
-import database.entities.UserEntity;
+import beans.FlightBean;
+import database.dao.FlightDao;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import java.util.List;
 
-/**
- * Created by Olga on 21.07.2017.
- */
+
+@WebServlet("/createFlight")
 public class FlightServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    final static Logger logger = Logger.getLogger(RegistrationServlet.class);
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect("/jsp/error_page.jsp");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        StringBuilder sb = new StringBuilder();
-        response.setContentType("text/html; charset=UTF-8");
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String fromPlace = req.getParameter("fromPlace");
+        String toPlace = req.getParameter("toPlace");
+        String date = req.getParameter("date");
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType ("text/html; charset=UTF-8");
 
-//        UserDao userDao = new UserDao();
- //       UserEntity userEntity = new UserEntity();
-//        userEntity.setLogin("olka");
-//        userEntity.setPassword("kek");
-//        userEntity.setRole("admin");
+        List<String> errors = new ArrayList<>();
+
+        // FlightDao flightDao = new FlightDao();
 
 
+        if (fromPlace == null || fromPlace.isEmpty()) {
+            errors.add("fromPlace_missing_error");
+            logger.info("fromPlace missing error");
+        }
 
+        if (toPlace == null || toPlace.isEmpty()) {
+            errors.add("toPlace_missing_error");
+            logger.info("toPlace missing error");
+        }
 
-//        System.out.println(userDao.save(userEntity));
-//
-//        List currentUsers = userDao.getAll();
+        if (date == null || date.isEmpty()) {
+            errors.add("date_missing_error");
+            logger.info("date missing error");
+        }
 
- //       System.out.println("currentUser " + currentUsers.size());
-        PrintWriter out = response.getWriter();
+        if (errors.size() == 0) {
+            FlightBean bean = new FlightBean();
+            bean.setFromPlace(fromPlace);
+            bean.setToPlace(toPlace);
+            bean.setDate(date);
+            bean.setReady(false);
+            registerFlight(bean);
+            logger.info("Flight from " + fromPlace + " to " + toPlace + " " + date + " has registered");
+            System.out.println("Flight from " + fromPlace + " to " + toPlace + " " + date + " has registered");
 
-        out.println(sb.toString());
-        out.close();
-        response.setStatus(HttpServletResponse.SC_OK);
-
+            resp.sendRedirect("/jsp/adminMenu.jsp");
+        } else {
+//            for (int i = 0; i < errors.size(); i++) {
+//                System.out.println(errors.get(i));
+//            }
+            req.getRequestDispatcher("/cities").forward(req, resp);
+        }
     }
+
+
+    public void registerFlight(FlightBean bean) {
+        FlightDao dao = new FlightDao();
+        dao.save(bean.toEntity());
+    }
+
 }

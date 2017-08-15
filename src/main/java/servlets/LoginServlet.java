@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
             if(dao.getRole(login).equals("dispatcher")){
                 resp.sendRedirect("/jsp/dispFlights.jsp");
             } else {
-                resp.sendRedirect("jsp/adminFlights.jsp");
+                resp.sendRedirect("jsp/adminMenu.jsp");
             }
 
         } else {

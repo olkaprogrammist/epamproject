@@ -14,15 +14,15 @@
 <div id="wrapper">
 
     <sector  id="choiceSection">
-       <a href="/jsp/adminFlights.jsp"> <div style="height: 100px">
-            Посмотреть список всех рейсов
-        </div></a>
+        <form action="/flightList" method="post">
+            <button> Список рейсов </button>
+        </form>
         <div style="height: 100px">
             Посмотреть список обработанных рейсов
         </div>
-       <a href="/jsp/createFlight.jsp"> <div style="height: 100px">
-            Создать новый рейс
-        </div></a>
+       <form action="/cities" method="post">
+          <button> Создать новый рейс </button>
+        </form>
      
     </sector>
 

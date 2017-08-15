@@ -1,11 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 21.07.2017
-  Time: 16:54
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <jsp:include page="/jsp/adminHeader.jsp"/>
@@ -13,41 +10,14 @@
 <body>
 <div id="wrapper">
     <section class="flights">
-       <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
+        <div id="flight_fromPlace_field" name="flight" type="flight">
+            <c:forEach items="${note}" var="note">
+               <h2> <c:out value="${note.fromPlace}"/></h2>
+                <h3><c:out value="${note.toPlace}"/> </h3>
+                <h4><c:out value="${note.date}"/></h4>
+            </c:forEach>
         </div>
     </section>
-
 
 </div>
 </body>
