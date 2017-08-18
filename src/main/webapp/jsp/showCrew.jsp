@@ -23,7 +23,7 @@
             <label class="label">${number} ${flight_id}</label>
         </div>
     </section>
-    <input type="hidden" name="flight_id" value="${flight_id}">
+    <%--<input type="hidden" name="flight_id" value="${flightId}">--%>
     <div class="sector">
         <section class="selector">
             <div>
@@ -80,7 +80,9 @@
         </section>
     </div>
 
+    <form action="/cancel" method="post">
     <div>
+        <input type="hidden" name="flight_id" value="${flight_id}">
         <button type="submit" class="saveButton">${accept}</button>
     </div>
     </form>

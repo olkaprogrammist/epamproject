@@ -27,7 +27,7 @@
         <c:forEach items="${newList}" var="list">
         <form action="/crew" method="post">
         <input type="hidden" name="list_id" value="${list.id}">
-            <button><c:out value="${list.fromPlace}"/> <c:out value="${list.toPlace}"/> <c:out value="${list.date}"/></button>
+            <button type="submit"><c:out value="${list.fromPlace}"/> <c:out value="${list.toPlace}"/> <c:out value="${list.date}"/></button>
         </form>
         </c:forEach>
     </section>

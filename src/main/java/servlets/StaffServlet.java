@@ -30,8 +30,6 @@ public class StaffServlet extends HttpServlet {
         req.setAttribute("list", list);
         req.setAttribute("flight_id", req.getParameter("flight_id"));
 
-    //    List newList = staffDao.getStaffByRole("стюард");
-    //    System.out.println("newList size:" + newList.size());
 
         req.getRequestDispatcher("/jsp/crewSelection.jsp").forward(req, resp);}
 }

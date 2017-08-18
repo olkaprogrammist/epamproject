@@ -26,14 +26,14 @@ public class FlightDao extends DaoInterfaceImp<FlightEntity, String> {
         return list;
     }
 
-    public void updateReady(int id){
+    public void updateReady(int id, boolean ready){
         Session s = HibernateUtil.getSessionFactory().openSession();
         Query query;
 
         query = s.createQuery("FROM FlightEntity where id=:id");
         query.setParameter("id", id);
         List<FlightEntity> list = query.list();
-        list.get(0).setReady(true);
+        list.get(0).setReady(ready);
         this.update(list.get(0));
     }
 }

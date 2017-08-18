@@ -33,7 +33,6 @@ public class FlightServlet extends HttpServlet {
 
         List<String> errors = new ArrayList<>();
 
-        // FlightDao flightDao = new FlightDao();
 
 
         if (fromPlace == null || fromPlace.isEmpty()) {
@@ -63,9 +62,7 @@ public class FlightServlet extends HttpServlet {
 
             resp.sendRedirect("/jsp/adminMenu.jsp");
         } else {
-//            for (int i = 0; i < errors.size(); i++) {
-//                System.out.println(errors.get(i));
-//            }
+
             req.getRequestDispatcher("/cities").forward(req, resp);
         }
     }
