@@ -17,7 +17,7 @@
 
 
 
-<fmt:bundle basename="language" prefix="registration_success_page.">
+<fmt:bundle basename="language" prefix="registration_success.">
     <fmt:message key="title" var="title"/>
     <fmt:message key="message" var="message"/>
     <fmt:message key="login_link" var="login_link"/>

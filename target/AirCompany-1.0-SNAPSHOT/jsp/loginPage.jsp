@@ -11,6 +11,10 @@
     <fmt:bundle basename="language" prefix="authorization.">
         <fmt:message key="title" var="title"/>
         <fmt:message key="error" var="auth_error"/>
+        <fmt:message key="auth_login" var="auth_login"/>
+        <fmt:message key="auth_password" var="auth_password"/>
+        <fmt:message key="registration" var="auth_registration"/>
+        <fmt:message key="signin" var="signin"/>
     </fmt:bundle>
 
 
@@ -23,7 +27,7 @@
                 <div>${auth_error}</div>
             </c:if>
             <form id="login_page_login_form" action="/login" method="post">
-                <input id="login_page_email_field" name="login" type="text" placeholder="${auth_email_login}">
+                <input id="login_page_email_field" name="login" type="text" placeholder="${auth_login}">
                 <br>
                 <input id="login_page_password_field" name="password" type="password" placeholder="${auth_password}">
                 <br>

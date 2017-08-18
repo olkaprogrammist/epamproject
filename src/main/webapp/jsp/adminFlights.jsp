@@ -5,20 +5,35 @@
 
 <html>
 <head>
-    <jsp:include page="/jsp/adminHeader.jsp"/>
+    <jsp:include page="/jsp/header.jsp"/>
 </head>
 <body>
 <div id="wrapper">
-    <section class="flights">
-        <div id="flight_fromPlace_field" name="flight" type="flight">
+    <section class="list">
+    <div >
+        <label>not ready</label>
+     <section >
+        <div name="flight" >
             <c:forEach items="${note}" var="note">
-               <h2> <c:out value="${note.fromPlace}"/></h2>
-                <h3><c:out value="${note.toPlace}"/> </h3>
-                <h4><c:out value="${note.date}"/></h4>
+               <h3> <c:out value="${note.fromPlace}"/> <c:out value="${note.toPlace}"/> <c:out value="${note.date}"/> </h3>
             </c:forEach>
         </div>
     </section>
+    </div>
+    <div>
+        <label>ready</label>
 
+    <section>
+        <c:forEach items="${newList}" var="list">
+        <form action="/crew" method="post">
+        <input type="hidden" name="list_id" value="${list.id}">
+            <button><c:out value="${list.fromPlace}"/> <c:out value="${list.toPlace}"/> <c:out value="${list.date}"/></button>
+        </form>
+        </c:forEach>
+    </section>
+
+    </div>
+    </section>
 </div>
 </body>
 </html>

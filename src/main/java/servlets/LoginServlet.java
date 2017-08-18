@@ -38,8 +38,9 @@ public class LoginServlet extends HttpServlet {
 
 
             logger.info("User " + login + " log in ");
-
+            req.getSession().setAttribute("role", dao.getRole(login));
             if(dao.getRole(login).equals("dispatcher")){
+
                 resp.sendRedirect("/jsp/dispMenu.jsp");
             } else {
                 resp.sendRedirect("jsp/adminMenu.jsp");

@@ -1,6 +1,7 @@
 package servlets;
 
 
+import beans.FlightBean;
 import database.dao.FlightDao;
 import org.apache.log4j.Logger;
 
@@ -23,20 +24,16 @@ public class AllFlightsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-
-
         FlightDao flightDao = new FlightDao();
-        List note = flightDao.getAll();
+        List note = flightDao.getReady(false);
         req.setAttribute("note", note);
-        for (int i = 0; i < note.size(); i++) {
 
+        List newList = flightDao.getReady(true);
 
-        }
+        req.setAttribute("newList", newList);
+        System.out.println(req.getSession().getAttribute("role"));
 
-        if (req.getSession().getAttribute("role") == "admin") {
+        if (req.getSession().getAttribute("role").equals("admin")) {
             req.getRequestDispatcher("/jsp/adminFlights.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("/jsp/dispFlights.jsp").forward(req, resp);

@@ -5,19 +5,19 @@
 
 <html>
 <head>
-    <jsp:include page="/jsp/dispHeader.jsp"/>
+    <jsp:include page="/jsp/header.jsp"/>
 </head>
 <body>
 <div id="wrapper">
     <section class="flights">
         <div id="flight_fromPlace_field" name="flight" type="flight">
             <c:forEach items="${note}" var="note">
-                <c:if test="${!note.ready}">
+
                     <form action="/staff" method="post">
                         <input type="hidden" name="flight_id" value="${note.id}">
-                        <button type="submit"><c:out value="${note.fromPlace}"/><c:out value="${note.toPlace}"/><c:out value="${note.date}"/></button>
+                        <button type="submit"><c:out value="${note.fromPlace}"/> <c:out value="${note.toPlace}"/> <c:out value="${note.date}"/></button>
                     </form>
-                </c:if>
+              
             </c:forEach>
         </div>
     </section>

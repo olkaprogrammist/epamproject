@@ -58,7 +58,9 @@ public class JournalServlet extends HttpServlet {
     }
 
     public void registerJournal(JournalBean bean) {
-        JournalDao dao = new JournalDao();
-        dao.save(bean.toEntity());
+        JournalDao journalDao = new JournalDao();
+        journalDao.save(bean.toEntity());
+        FlightDao flightDao = new FlightDao();
+        flightDao.updateReady(bean.getFlightId());
     }
 }

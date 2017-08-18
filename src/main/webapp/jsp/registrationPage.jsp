@@ -30,7 +30,6 @@
     <fmt:message key="password_not_valid_error" var="password_not_valid_error"/>
     <fmt:message key="password_missing_error" var="password_missing_error"/>
     <fmt:message key="role" var="role"/>
-    <fmt:message key="role_missing_error" var="role_missing_error"/>
     <fmt:message key="complete_signup" var="complete_signup"/>
 </fmt:bundle>
 
@@ -42,13 +41,13 @@
         <form id="registration_form" action="/registration" method="post">
 
             <input id="registration_login_field" name="login" type="text" placeholder="${login}" value="${current_login}">
-            <span id="login_missing_error" class="login_errors">${login_missing_error}</span>
+
             <span id="login_not_valid_error" class="login_errors">${login_not_valid_error}</span>
-            <span id="login_already_used_error" class="login_errors">${login_already_used_error}</span>
+
             <br>
 
             <input id="registration_password_field" name="password" type="password" placeholder="${password}">
-            <span id="password_missing_error" class="password_errors">${password_missing_error}</span>
+           
             <span id="password_not_valid_error" class="password_errors">${password_not_valid_error}</span>
             <br>
 
@@ -57,7 +56,6 @@
                <option>dispatcher</option>
            </select>
             <%--<input id="registration_role_field" name="role" type="role" placeholder="${role}">--%>
-            <span id="role_missing_error" class="role_errors">${role_missing_error}</span>
             <br>
 
             <button>${complete_signup}</button>

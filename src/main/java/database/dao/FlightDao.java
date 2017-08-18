@@ -16,16 +16,24 @@ public class FlightDao extends DaoInterfaceImp<FlightEntity, String> {
         super(FlightEntity.class);
     }
 
-    public Boolean getReady(Boolean ready){
+    public List<FlightEntity> getReady(Boolean ready){
         Session s = HibernateUtil.getSessionFactory().openSession();
         Query query;
 
         query = s.createQuery("FROM FlightEntity where ready=:ready");
         query.setParameter("ready", ready);
-
         List<FlightEntity> list = query.list();
-        if (list.size() != 0) {
-            return list.get(0).getReady();
-        } else return false;
+        return list;
+    }
+
+    public void updateReady(int id){
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Query query;
+
+        query = s.createQuery("FROM FlightEntity where id=:id");
+        query.setParameter("id", id);
+        List<FlightEntity> list = query.list();
+        list.get(0).setReady(true);
+        this.update(list.get(0));
     }
 }

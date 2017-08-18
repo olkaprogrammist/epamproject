@@ -30,7 +30,6 @@
     <fmt:message key="password_not_valid_error" var="password_not_valid_error"/>
     <fmt:message key="password_missing_error" var="password_missing_error"/>
     <fmt:message key="role" var="role"/>
-    <fmt:message key="role_missing_error" var="role_missing_error"/>
     <fmt:message key="complete_signup" var="complete_signup"/>
 </fmt:bundle>
 
@@ -57,7 +56,6 @@
                <option>dispatcher</option>
            </select>
             <%--<input id="registration_role_field" name="role" type="role" placeholder="${role}">--%>
-            <span id="role_missing_error" class="role_errors">${role_missing_error}</span>
             <br>
 
             <button>${complete_signup}</button>

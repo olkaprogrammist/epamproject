@@ -1,22 +1,22 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 21.07.2017
-  Time: 16:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <jsp:include page="header.jsp"/>
 </head>
 <body>
+<fmt:bundle basename="language" prefix="start.">
+    <fmt:message key="signin" var="signin"/>
+    <fmt:message key="signup" var="signup"/>
+   </fmt:bundle>
 <div id="wrapper">
 <section id="choiceSection">
     <a href="/jsp/loginPage.jsp">
-    <div> Войти </div>    </a>
+    <div> ${signin} </div>    </a>
     <a href="/jsp/registrationPage.jsp">
-    <div> Зарегистрироваться </div>   </a>
+    <div> ${signup} </div>   </a>
 </section>
 
 </div>

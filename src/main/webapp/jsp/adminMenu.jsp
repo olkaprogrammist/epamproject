@@ -1,27 +1,32 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 21.07.2017
-  Time: 16:54
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <jsp:include page="/jsp/dispHeader.jsp"/>
+    <jsp:include page="/jsp/header.jsp"/>
 </head>
 <body>
 <div id="wrapper">
+    <fmt:bundle basename="language" prefix="menu.">
+        <fmt:message key="list" var="list"/>
+        <fmt:message key="exit" var="exit"/>
+        <fmt:message key="create" var="create"/>
+        <fmt:message key="readylist" var="readylist"/>
+    </fmt:bundle>
 
     <sector  id="choiceSection">
         <form action="/flightList" method="post">
-            <button> Список рейсов </button>
+            <button> ${list} </button>
         </form>
-        <div style="height: 100px">
-            Посмотреть список обработанных рейсов
-        </div>
+        <form action="/flightList" method="post" >
+           <button> ${readyList}</button>
+        </form>
        <form action="/cities" method="post">
-          <button> Создать новый рейс </button>
+          <button> ${create} </button>
+        </form>
+        <form action="/logout" method="post">
+            <button> ${exit} </button>
         </form>
     </sector>
 
