@@ -63,6 +63,7 @@ public class CrewServlet extends HttpServlet {
         req.setAttribute("steward2List", steward2List);
         req.setAttribute("steward3List", steward3List);
         req.setAttribute("journalEntityList", journalEntityList);
+        req.setAttribute("flight_id", flightId);
 
 
         req.getRequestDispatcher("/jsp/showCrew.jsp").forward(req, resp);

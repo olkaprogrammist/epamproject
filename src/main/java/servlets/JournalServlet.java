@@ -22,7 +22,7 @@ import java.util.Map;
 
 @WebServlet("/journal")
 public class JournalServlet extends HttpServlet {
-    final static Logger logger = Logger.getLogger(RegistrationServlet.class);
+    final static Logger logger = Logger.getLogger(JournalServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,10 +34,6 @@ public class JournalServlet extends HttpServlet {
 
         Map<String,String[]> params = req.getParameterMap();
         List<String> errors = new ArrayList<>();
-        for(Map.Entry<String, String[]> entry : params.entrySet()){
-            System.out.println(entry.getKey() + ": " + Arrays.toString(entry.getValue()));
-        }
-
 
         if (params.get("staff_id").length == 7 && params.get("flight_id").length == 1){
             for (int i = 0; i < 7; i++){
@@ -61,6 +57,6 @@ public class JournalServlet extends HttpServlet {
         JournalDao journalDao = new JournalDao();
         journalDao.save(bean.toEntity());
         FlightDao flightDao = new FlightDao();
-        flightDao.updateReady(bean.getFlightId());
+        flightDao.updateReady(bean.getFlightId(),true);
     }
 }

@@ -31,7 +31,7 @@ public class AllFlightsServlet extends HttpServlet {
         List newList = flightDao.getReady(true);
 
         req.setAttribute("newList", newList);
-        System.out.println(req.getSession().getAttribute("role"));
+
 
         if (req.getSession().getAttribute("role").equals("admin")) {
             req.getRequestDispatcher("/jsp/adminFlights.jsp").forward(req, resp);

@@ -28,8 +28,8 @@ public class UserDao extends DaoInterfaceImp<UserEntity, String> {
 
 
     public boolean isUserCorrect(String login, String password) {
-        //вставить логирование
-        System.out.println("логин: " + login + ", пароль: " + password);
+
+
         Session s = HibernateUtil.getSessionFactory().openSession();
         Query query;
 
