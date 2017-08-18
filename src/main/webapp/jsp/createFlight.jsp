@@ -1,78 +1,54 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 21.07.2017
-  Time: 16:54
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
-    <jsp:include page="/jsp/adminHeader.jsp"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <jsp:include page="/jsp/header.jsp"/>
 </head>
 <body>
 <div id="wrapper">
+    <fmt:bundle basename="language" prefix="createFlight.">
+        <fmt:message key="fromPlace" var="fromPlace"/>
+        <fmt:message key="choseFromPlace" var="choseFromPlace"/>
+        <fmt:message key="toPlace" var="toPlace"/>
+        <fmt:message key="choseToPlace" var="choseToPlace"/>
+        <fmt:message key="date" var="date"/>
+        <fmt:message key="save" var="save"/>
+
+    </fmt:bundle>
+<div>
+<form action="/createFlight" method="post">
 <sector class="selector">
     <div>
-    <label> Место отправления </label>
-    <select>
-        <option>Москва</option>
-        <option>Питер</option>
-        <option>Немосква</option>
-        <option>Непитер</option>
-        <option>Таллин</option>
-        <option>Неталлин</option>
-        <option>Нарва</option>
-        <option>Ненарва</option>
+    <label> ${fromPlace} </label>
+    <select id="flight_fromPlace_field" name="fromPlace" type="fromPlace">
+        <option>${choseFromPlace}</option>
+        <c:forEach items="${cities}" var="city">
+                <option><c:out value="${city.city}"/></option>
+        </c:forEach>
 
     </select>
     </div>
     <div>
-        <label> Место прибытия </label>
-        <select>
-            <option>Москва</option>
-            <option>Питер</option>
-            <option>Немосква</option>
-            <option>Непитер</option>
-            <option>Таллин</option>
-            <option>Неталлин</option>
-            <option>Нарва</option>
-            <option>Ненарва</option>
-
+        <label> ${toPlace} </label>
+        <select id="flight_toPlace_field" name="toPlace" type="toPlace">
+            <option>${choseToPlace}</option>
+            <c:forEach items="${cities}" var="city">
+                <option><c:out value="${city.city}"/></option>
+            </c:forEach>
         </select>
     </div>
     <div>
-        <label> Время/Дата отправления </label>
-        <select>
-            <option>10 00 </option>
-            <option>12 30</option>
-            <option>16 00</option>
-            <option>17 14</option>
-            <option>17 48</option>
-            <option>19 30</option>
-            <option>21 57</option>
-            <option>00 45</option>
-
-        </select>
+        <label>${date}</label>
+        <input type="date" id="flight_date_field" name="date">
     </div>
-    <div>
-        <label> Время/Дата прибытия </label>
-        <select>
-            <option>10 00 </option>
-            <option>12 30</option>
-            <option>16 00</option>
-            <option>17 14</option>
-            <option>17 48</option>
-            <option>19 30</option>
-            <option>21 57</option>
-            <option>00 45</option>
-
-        </select>
-    </div>
-
-    <button> SAVE </button>
+    <button>${save}</button>
 </sector>
-
+</form>
+</div>
 </div>
 </body>
 </html>

@@ -1,21 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 21.07.2017
-  Time: 16:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
-    <jsp:include page="header.jsp"/>
+    <link rel='stylesheet' href='/css/base_n_headers.css'>
+    <link rel='stylesheet' href='/css/registration_success_page.css'>
+    <script src='/js/jquery-3.1.1.js'></script>
+    <script src='/js/header_functions.js'></script>
+    <%@include file="/jsp/header.jsp" %>
 </head>
 <body>
-<div id="wrapper">
- <div>
-     Поздравляем! Вы успешно прошли регистрацию!
- </div>
-    <jsp:include page="loginPage.jsp"/>
+
+
+
+
+
+<fmt:bundle basename="language" prefix="registration_success.">
+    <fmt:message key="title" var="title"/>
+    <fmt:message key="message" var="message"/>
+    <fmt:message key="login_link" var="login_link"/>
+    <fmt:message key="back" var="back"/>
+
+</fmt:bundle>
+<div id="page_wrapper">
+    <div id="registration_success_page_content_wrapper">
+        <h1 class="registration_success_page_title">${title}</h1>
+        <p class="registration_success_page_message">${message}</p><br>
+        <div class="registration_success_page_back_link_wrapper">
+            <a class="registration_success_page_auth_link" href="/jsp/loginPage.jsp">${login_link}</a>
+            <a class="registration_success_page_back_link" href="/">${back}</a>
+        </div>
+    </div>
 </div>
-</body>
-</html>

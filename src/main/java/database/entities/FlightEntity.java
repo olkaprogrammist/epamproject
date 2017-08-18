@@ -1,7 +1,10 @@
 package database.entities;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Olga on 13.08.2017.
@@ -12,9 +15,8 @@ public class FlightEntity {
     private int id;
     private String fromPlace;
     private String toPlace;
-    private Timestamp fromTime;
-    private Timestamp toTime;
-    private String ready;
+    private String date;
+    private Boolean ready;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -47,32 +49,20 @@ public class FlightEntity {
     }
 
     @Basic
-    @Column(name = "from_time", nullable = false)
-    public Timestamp getFromTime() {
-        return fromTime;
-    }
+    @Column(name = "date", nullable = false)
+    public String getDate() { return date;}
 
-    public void setFromTime(Timestamp fromTime) {
-        this.fromTime = fromTime;
-    }
-
-    @Basic
-    @Column(name = "to_time", nullable = false)
-    public Timestamp getToTime() {
-        return toTime;
-    }
-
-    public void setToTime(Timestamp toTime) {
-        this.toTime = toTime;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Basic
-    @Column(name = "ready", nullable = false, length = 45)
-    public String getReady() {
+    @Column(name = "ready", nullable = false)
+    public Boolean getReady() {
         return ready;
     }
 
-    public void setReady(String ready) {
+    public void setReady(Boolean ready) {
         this.ready = ready;
     }
 
@@ -86,8 +76,7 @@ public class FlightEntity {
         if (id != that.id) return false;
         if (fromPlace != null ? !fromPlace.equals(that.fromPlace) : that.fromPlace != null) return false;
         if (toPlace != null ? !toPlace.equals(that.toPlace) : that.toPlace != null) return false;
-        if (fromTime != null ? !fromTime.equals(that.fromTime) : that.fromTime != null) return false;
-        if (toTime != null ? !toTime.equals(that.toTime) : that.toTime != null) return false;
+        if (date != null ? !date.equals(that.date) : that.date != null) return false;
         if (ready != null ? !ready.equals(that.ready) : that.ready != null) return false;
 
         return true;
@@ -98,8 +87,7 @@ public class FlightEntity {
         int result = id;
         result = 31 * result + (fromPlace != null ? fromPlace.hashCode() : 0);
         result = 31 * result + (toPlace != null ? toPlace.hashCode() : 0);
-        result = 31 * result + (fromTime != null ? fromTime.hashCode() : 0);
-        result = 31 * result + (toTime != null ? toTime.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (ready != null ? ready.hashCode() : 0);
         return result;
     }

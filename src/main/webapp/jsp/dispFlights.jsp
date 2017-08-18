@@ -1,54 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 21.07.2017
-  Time: 16:54
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
-    <jsp:include page="/jsp/dispHeader.jsp"/>
+    <jsp:include page="/jsp/header.jsp"/>
 </head>
 <body>
 <div id="wrapper">
     <section class="flights">
-       <a href="/jsp/crewSelection.jsp"><div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div></a>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
-        </div>
-        <div>
-            Питер 1.08.17 15:00 - Москва 1.08.17 17:25
+        <div id="flight_fromPlace_field" name="flight" type="flight">
+            <c:forEach items="${note}" var="note">
+
+                    <form action="/staff" method="post">
+                        <input type="hidden" name="flight_id" value="${note.id}">
+                        <button type="submit"><c:out value="${note.fromPlace}"/> <c:out value="${note.toPlace}"/> <c:out value="${note.date}"/></button>
+                    </form>
+              
+            </c:forEach>
         </div>
     </section>
-
 
 </div>
 </body>
 </html>
+

@@ -28,6 +28,8 @@ public class UserDao extends DaoInterfaceImp<UserEntity, String> {
 
 
     public boolean isUserCorrect(String login, String password) {
+        //вставить логирование
+        System.out.println("логин: " + login + ", пароль: " + password);
         Session s = HibernateUtil.getSessionFactory().openSession();
         Query query;
 
@@ -36,26 +38,21 @@ public class UserDao extends DaoInterfaceImp<UserEntity, String> {
 
         List<UserEntity> list = query.list();
         if (list.size() != 0) {
-            password += list.get(0).getPassword();
-            byte[] passHash;
-
-            MessageDigest md = null;
-            try {
-                md = MessageDigest.getInstance("SHA-256");
-                md.update(password.getBytes("UTF-8"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            passHash = md.digest();
-            return (slowEquals(list.get(0).getPassword().getBytes(), passHash));
+            return list.get(0).getPassword().equals(password);
         } else return false;
     }
 
-    private static boolean slowEquals(byte[] a, byte[] b) {
-        int diff = a.length ^ b.length;
-        for (int i = 0; i < a.length && i < b.length; i++)
-            diff |= a[i] ^ b[i];
-        return diff == 0;
+    public String getRole(String login){
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Query query;
+
+        query = s.createQuery("FROM UserEntity where login=:userLogin");
+        query.setParameter("userLogin", login);
+
+        List<UserEntity> list = query.list();
+        if (list.size() != 0) {
+            return list.get(0).getRole();
+        } else return null;
     }
 
 }

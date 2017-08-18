@@ -1,18 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Olga
-  Date: 13.08.2017
-  Time: 23:38
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <title>Ошибочка</title>
+    <title>Oops!</title>
 </head>
 <body>
+<fmt:bundle basename="language" prefix="error.">
+    <fmt:message key="title" var="title"/>
+    <fmt:message key="message" var="message"/>
+    <fmt:message key="back" var="back"/>
+</fmt:bundle>
 
-Извиняйте, что то пошло не так
-
+<div>${title}</div>
+<div>${message}</div>
+<a href="startpage.jsp">
+<button>${back}</button></a>
 </body>
 </html>
