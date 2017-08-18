@@ -16,7 +16,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/jsp/error_page.jsp");
+        resp.sendRedirect("/jsp/errorPage.jsp");
     }
 
     @Override
@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (login == null || password == null) {
-            resp.sendRedirect("/jsp/error_page.jsp");
+            resp.sendRedirect("/jsp/errorPage.jsp");
             return;
         }
 
@@ -38,12 +38,9 @@ public class LoginServlet extends HttpServlet {
 
 
             logger.info("User " + login + " log in ");
-//            Cookie c = new Cookie("language", "nothing");
-//            c.setMaxAge(0);
-//            resp.addCookie(c);
 
             if(dao.getRole(login).equals("dispatcher")){
-                resp.sendRedirect("/jsp/dispFlights.jsp");
+                resp.sendRedirect("/jsp/dispMenu.jsp");
             } else {
                 resp.sendRedirect("jsp/adminMenu.jsp");
             }

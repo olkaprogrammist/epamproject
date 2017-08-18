@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/cities")
-public class CitiesServlet extends HttpServlet {
+@WebServlet("/staff")
+public class StaffServlet extends HttpServlet {
     final static Logger logger = Logger.getLogger(CitiesServlet.class);
 
     @Override
@@ -25,10 +25,13 @@ public class CitiesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        CitiesDao citiesDao = new CitiesDao();
-        List cities = citiesDao.getAll();
-        req.setAttribute("cities", cities);
-        req.getRequestDispatcher("/jsp/createFlight.jsp").forward(req, resp);
+        StaffDao staffDao = new StaffDao();
+        List list = staffDao.getAll();
+        req.setAttribute("list", list);
+        req.setAttribute("flight_id", req.getParameter("flight_id"));
 
-    }
+    //    List newList = staffDao.getStaffByRole("стюард");
+    //    System.out.println("newList size:" + newList.size());
+
+        req.getRequestDispatcher("/jsp/crewSelection.jsp").forward(req, resp);}
 }

@@ -21,17 +21,15 @@ public class FlightServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/jsp/error_page.jsp");
+        resp.sendRedirect("/jsp/errorPage.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String fromPlace = req.getParameter("fromPlace");
         String toPlace = req.getParameter("toPlace");
         String date = req.getParameter("date");
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType ("text/html; charset=UTF-8");
 
         List<String> errors = new ArrayList<>();
 
@@ -61,7 +59,7 @@ public class FlightServlet extends HttpServlet {
             bean.setReady(false);
             registerFlight(bean);
             logger.info("Flight from " + fromPlace + " to " + toPlace + " " + date + " has registered");
-            System.out.println("Flight from " + fromPlace + " to " + toPlace + " " + date + " has registered");
+
 
             resp.sendRedirect("/jsp/adminMenu.jsp");
         } else {
